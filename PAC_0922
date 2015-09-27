@@ -1,0 +1,22 @@
+PAC 9/22/15
+boolean boolvar = false;
+int a = 10;
+int b = 10;
+boolvar = (a == b); //answer is true. boolvar is now equal to true
+
+if (a > b){
+	max = a;
+}
+else {
+	max = b;
+}
+
+max = (a > b) ? a:b;
+
+
+if(passed == true)
+same as 
+if(passed)
+
+do not need semicolons
+else latches itself to teh closest unmatched if 
