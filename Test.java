@@ -5,9 +5,9 @@ public class Test {
 	Scanner userInput = new Scanner(System.in);
 	String fname = "";
 	String lname = "";
-	boolean quitFlag;
+	boolean quitFlag = true;
 
-		while(true) {
+		while(quitFlag) {
 			System.out.println("type /'xxx/' to exit")
 			System.out.print("First Name : ");
 			fname = userInput.next();
