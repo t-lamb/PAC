@@ -17,7 +17,7 @@ public class Test {
 
 			System.out.print("Last Name : ");
 			lname = userInput.next();			
-			if (f=lname.equals ("xxx"){
+			if (lname.equals ("xxx"){
 				quitFlag = false,
 			}
 			System.out.println("Given Name: " + fname + " " + lname);

@@ -3,25 +3,36 @@ import java.util.Scanner;
 public class Calc {
 	public static void main(String args[]){
 	Scanner userInput = new Scanner(System.in);
-	int input0;
-	int input1;
+	String input0;
+	String input1;
 	String op = "";
+	Double answer = 0.0;
 
-		while(true) {
-			System.out.println("type xxx to exit");
+		while (true) {
+			System.out.println("type c to clear. type x to exit");
+			
 			System.out.print("1st input: ");
-			//input0 = userInput.next();
-			input0 = userInput.nextInt();
+			input0 = userInput.next();
+			Double num0 = Double.parseDouble(input0);
 
 			System.out.print("op: ");
-			//op = userInput.next();
 			op = userInput.next();
 
 			System.out.print("2nd input: ");
-			//input1 = userInput.next();	
-			input1 = userInput.nextInt();		
+			input1 = userInput.next();
+			Double num1 = Double.parseDouble(input1);
 
-			System.out.println("Equation: " + input0 + " " + op + " " + input1);
+			switch (op) {
+				case "+": answer = num0 + num1; break;
+				case "-": answer = num0 - num1; break;
+				case "*": answer = num0 * num1; break;
+				case "/": answer = num0 / num1; break;
+				case "x": break;
+				case "c": break;
+				default: System.out.println("Err"); break;
+			}
+
+			System.out.println("ans: " + answer);
 		}
 
 	}
