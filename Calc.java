@@ -1,3 +1,9 @@
+/* 
+Teresa Lamb
+PAC I - Lab 3 - Due 9/30/15
+Run 'Calc'
+*/
+
 import java.util.Scanner;
 
 public class Calc {
@@ -9,12 +15,14 @@ public class Calc {
 	Double num1 = 0.0;
 	Double answer = 0.0;
 	Boolean firsttime = true;
+	Boolean dividebyzero = false;
+	Boolean unknownoperator = false;
 	Boolean quit = true;
 
 		while (quit) {
-			System.out.println("type c to clear. type x to exit");
 			
 			if (firsttime) {
+				System.out.println("type c to clear. type x to exit");
 				System.out.print("1st input: ");
 				input0 = userInput.next();
 				num0 = Double.parseDouble(input0);
@@ -26,9 +34,15 @@ public class Calc {
 
 			if (op.equals("x")) {
 				quit = false;
+			} else if (op.equals("c")) {
+				num0 = 0.0;
+				System.out.println("ans: " + num0);
 			} else {
-
-				System.out.print("2nd input: ");
+				if (firsttime) {
+					System.out.print("2nd input: ");
+				} else {
+					System.out.print("more input: ");
+				}
 				input1 = userInput.next();
 				num1 = Double.parseDouble(input1);
 
@@ -36,13 +50,24 @@ public class Calc {
 					case "+": answer = num0 + num1; break;
 					case "-": answer = num0 - num1; break;
 					case "*": answer = num0 * num1; break;
-					case "/": answer = num0 / num1; break;
-					case "c": answer = 0.0; break;
-					default: System.out.println("Err"); break;
+					case "/": answer = num0 / num1; 
+							if(num1 == 0) {
+								dividebyzero = true;
+							}								
+							break;
+					default: unknownoperator = true; break;
 				}
 
-				System.out.println("ans: " + answer);
-				num0 = answer;
+				if (dividebyzero) {
+					System.out.println("Error: You cannot divide by 0.");
+					dividebyzero = false;
+				} else if (unknownoperator) {
+					System.out.println("Error: Unknown operator " + op);
+					unknownoperator = false;
+				} else {
+					System.out.println("ans: " + answer);
+					num0 = answer;
+				}
 			}
 		}
 
