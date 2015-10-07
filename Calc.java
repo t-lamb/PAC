@@ -11,18 +11,18 @@ public class Calc {
 	Scanner userInput = new Scanner(System.in);
 	String input0, input1;
 	String op = "";
-	Double num0 = 0.0;
-	Double num1 = 0.0;
-	Double answer = 0.0;
-	Boolean firsttime = true;
-	Boolean dividebyzero = false;
-	Boolean unknownoperator = false;
-	Boolean quit = true;
+	double num0 = 0.0;
+	double num1 = 0.0;
+	double answer = 0.0;
+	boolean firsttime = true;
+	boolean dividebyzero = false;
+	boolean unknownoperator = false;
+	boolean quit = true;
 
 		while (quit) {
 			
 			if (firsttime) {
-				System.out.println("type c to clear. type x to exit");
+				System.out.println("type c to clear. \'type x to exit");
 				System.out.print("1st input: ");
 				input0 = userInput.next();
 				num0 = Double.parseDouble(input0);
