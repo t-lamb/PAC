@@ -2,6 +2,8 @@
 Teresa Lamb
 PAC I - Lab 4 - Due 10/7/15
 Run 'Car'
+
+Start with a car of a random color in a random location, turn it on and move it around a grid.
 */
 
 import java.util.Scanner;
@@ -92,7 +94,7 @@ public class Car {
 
 	static int moveCarX(boolean inIgnition, int inCarX, int inMoveX) {
 		if (inIgnition){
-			if ((inMoveX + inCarX) <= 20){
+			if ((inMoveX + inCarX) <= 20 && (inMoveX + inCarX) >= 1){
 				inCarX = inMoveX + inCarX;
 			} else {
 				System.out.println("You cannot move the car out of the grid.");
@@ -105,7 +107,7 @@ public class Car {
 
 	static int moveCarY(boolean inIgnition, int inCarY, int inMoveY) {
 		if (inIgnition){
-			if ((inMoveY + inCarY) <= 20) {
+			if ((inMoveY + inCarY) <= 20 && (inMoveY + inCarY) >= 1) {
 				inCarY = inMoveY + inCarY;
 			} else {
 				System.out.println("You cannot move the car out of the grid.");
