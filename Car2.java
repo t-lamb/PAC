@@ -1,7 +1,7 @@
 /* 
 Teresa Lamb
 PAC I - Lab 5 - Due 10/14/15
-Run 'Car part 2'
+Run 'Car2'
 
 Start with 10 cars of random colors in a random locations, turn them on and move them around a grid.
 */
@@ -12,16 +12,11 @@ public class Car2 {
 
 	public static void main(String args[]){	
 		Scanner userInput = new Scanner(System.in);			
-		//boolean ignition = false;
-		//char colorChar = colorAssign();
 		String colorString = "";
-		//int carX = randomPosition();
-		//int carY = randomPosition();
 		int moveX = 0;
 		int moveY = 0;
 		boolean running = true;
-		boolean movingCar = false;
-		
+		boolean movingCar = false;		
 		int numCars = 10;
 		char[] colorCharArray = new char[numCars];
 		boolean[] ignitionArray = new boolean [numCars];
@@ -89,24 +84,10 @@ public class Car2 {
 	}
 
 	static char colorAssign() {	
-		int b = (int )(Math.random() * 5 + 1);
-		char c;
+		char[] charArr = {'R', 'G', 'B', 'W', 'S'};
+		int b = (int )(Math.random() * 5);
 
-		switch(b) {
-			case 1: c = 'R'; //red
-					break;
-			case 2: c = 'G'; //green
-					break;
-			case 3: c = 'B'; //blue
-					break;
-			case 4: c = 'W'; //white
-					break;
-			case 5: c = 'S'; //silver
-					break;
-			default: c = 'U'; //undefined
-					break;
-		}
-		return c;
+		return charArr[b];
 	}
 
 	static int moveCarX(boolean inIgnition, int inCarX, int inMoveX) {
