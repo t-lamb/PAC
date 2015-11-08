@@ -9,15 +9,21 @@ import java.util.Scanner;
 
 public class Car3 {
 
-	public static void main(String args[]){	
+	public static void main(String args[]) {	
 		Scanner userInput = new Scanner(System.in);	
 		Car[] carArray = new Car[10];
+		boolean movingCar = false;
 		boolean quit = false;
+
+		for (int i=0; i < carArray.length; i++) {
+			carArray[i] = new Car();
+		}
 
 		while (!quit) {
 			System.out.println("Which car would you like to use next? (1-10)");
 			int carInt = userInput.nextInt();
 			int carPos = carInt - 1;
+			System.out.println(carArray[carPos].toString());
 
 			System.out.println("What would you like to do with car " + carInt + "?");
 			System.out.println("1: change ignition");
@@ -26,7 +32,7 @@ public class Car3 {
 			int input = userInput.nextInt();
 
 			switch(input) {
-				case 1: carArr[carPos].changeIgnition();
+				case 1: carArray[carPos].changeIgnition();
 						break;
 				case 2: movingCar = true;
 						break;
@@ -41,16 +47,18 @@ public class Car3 {
 				System.out.println("1: horizontal");
 				System.out.println("2: vertical");
 				input = userInput.nextInt();
+				int moveX = 0;
+				int moveY = 0;
 
 				switch(input) {
 					case 1: 
 						System.out.println("How far left (negative value) or right (positive value) would you like to move?");
-						int moveX = userInput.nextInt();
+						moveX = userInput.nextInt();
 						carArray[carPos].moveCarX(moveX);
 						break;
 					case 2:
 						System.out.println("How far down (negative value) or up (positive value) would you like to move?");
-						int moveY = userInput.nextInt();
+						moveY = userInput.nextInt();
 						carArray[carPos].moveCarY(moveY);
 						break;
 					default: 
@@ -60,62 +68,7 @@ public class Car3 {
 				movingCar = false;
 			}
 
-			reportStates(colorCharArray[carPos], ignitionArray[carPos], carXArray[carPos], carYArray[carPos]);
+			System.out.println(carArray[carPos].toString());
 		}
-
-	}
-
-
-
-
-
-	static void reportStates(char inColorChar, boolean inIgnition, int inCarX, int inCarY) {
-		System.out.println("Car Information");
-		String colorString;
-
-		//Print colorString based on Char
-		switch(inColorChar) {
-			case'R': colorString = "red";
-					break;
-			case'G': colorString = "green";
-					break;
-			case'B': colorString = "blue";
-					break;
-			case'W': colorString = "white";
-					break;
-			case'S': colorString = "silver";
-					break;
-			default: colorString = "Invalid color";
-					break;
-		}
-		System.out.println("Color: " + colorString);
-
-		//print ignition state
-		if (inIgnition) {
-			System.out.println("Ignition: on");
-		} else {
-			System.out.println("Ignition: off");
-		}
-
-		//print car location
-		System.out.println("Location: (" + inCarX + ", " + inCarY + ")");
-
-		//print grid
-		for (int i = 0; i < 20; i++) {
-
-			if (i > 0) {
-				System.out.print("\n");
-			}
-			System.out.print("- ");
-
-			for (int j = 0; j < 20; j++){
-				if (j == (inCarX - 1) && i == (inCarY - 1)){
-					System.out.print(inColorChar + " ");
-				} else {
-					System.out.print("- ");
-				}
-			}
-		}
-		System.out.print("\n");
 	}
 }
