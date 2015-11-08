@@ -1,9 +1,8 @@
 /* 
 Teresa Lamb
 PAC I - Lab 6 - Due 11/4/15
-Run 'SmallInt'
-
 */
+
 public class SmallInt {
 	private int value;
 	public static final int MAXVALUE = 1000;
@@ -46,7 +45,7 @@ public class SmallInt {
 			}
 			//add value of bit to front of current string
 			bin = newBit + bin;
-			//update bitVal, so we can evaluate the next binary digit space
+			//update bitVal, so we can evaluate the next power of 2
 			bitVal *= 2;
 
 			/*
