@@ -1,8 +1,7 @@
 /* 
 Teresa Lamb
 PAC I - Lab 7 - Due 11/11/15
-Run 'Car'
-
+Run 'Car3'
 */
 
 public class Car {
@@ -11,7 +10,7 @@ public class Car {
 	private int carX;
 	private int carY;
 
-	public Car () {
+	public Car() {
 		colorAssign();
 		ignition = false;
 		carX = randomPosition();
@@ -29,20 +28,22 @@ public class Car {
 
 	public String getColor(){
 		//return color string based on color char
+		String colorString = "";
 		switch(colorChar) {
-			case'R': return "red";
-					//break;
-			case'G': return "green";
-					//break;
-			case'B': return "blue";
-					//break;
-			case'W': return "white";
-					//break;
-			case'S': return "silver";
-					//break;
-			default: return "Invalid color";
-					//break;
+			case'R': colorString = "Red";
+					break;
+			case'G': colorString = "Green";
+					break;
+			case'B': colorString = "Blue";
+					break;
+			case'W': colorString = "White";
+					break;
+			case'S': colorString = "Silver";
+					break;
+			default: colorString = "Invalid color";
+					break;
 		}
+		return colorString;
 	}
 
 	//IGNITION METHODS
@@ -63,7 +64,7 @@ public class Car {
 	public void moveCarX(int inMoveX) {
 		if (ignition) {
 			if (1 <= (inMoveX + carX) && (inMoveX + carX) <= 20) {
-				carX = inMoveX;
+				carX += inMoveX;
 			} else { //if car is outside of grid
 				System.out.println("You cannot move the car out of the grid.");
 			}
@@ -75,12 +76,12 @@ public class Car {
 	public void moveCarY(int inMoveY) {
 		if (ignition) {
 			if (1 <= (inMoveY + carY) && (inMoveY + carY) <= 20) {
-				carY = inMoveY;
+				carY += inMoveY;
 			} else { //if car is outside of grid
 				System.out.println("You cannot move the car out of the grid.");
 			}
 		} else { //if ignition is off
-			System.out.println("You must turn on the ignition.");
+			System.out.println("You must first turn on the ignition.");
 		}
 	}
 
