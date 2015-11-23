@@ -12,6 +12,14 @@ public class Candy extends DessertItem{
 		int cost = (int)Math.round(pricePerLb * weight);
 		return cost;
 	}
+
+	public String getWeight(){
+		return Double.toString(weight);
+	}
+
+	public int getPricePerLb(){
+		return pricePerLb;
+	}
 }
 
 /*

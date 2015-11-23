@@ -12,6 +12,14 @@ public class Cookie extends DessertItem{
 		int cost = (int)Math.round(numCookies * pricePerDozen / 12);
 		return cost;
 	}
+
+	public String getNumCookies(){
+		return Integer.toString(numCookies);
+	}
+
+	public int getPricePerDozen(){
+		return pricePerDozen;
+	}
 }
 
 /*
