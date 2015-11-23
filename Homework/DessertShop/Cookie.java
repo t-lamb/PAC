@@ -1,3 +1,7 @@
+/* 
+Teresa Lamb
+PAC I - Lab 8: Dessert Shoppe - Due 11/25/15
+*/
 public class Cookie extends DessertItem{
 	private int numCookies;
 	private int pricePerDozen;

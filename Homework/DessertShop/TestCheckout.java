@@ -1,3 +1,7 @@
+/* 
+PAC I - Lab 8: Dessert Shoppe - Due 11/25/15
+Provided file - Do Not Change
+*/
 public class TestCheckout {
 
   public static void main(String[] args) {

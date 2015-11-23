@@ -1,6 +1,10 @@
 /**
  * Abstract superclass for Dessert Item hierarchy
  */
+/* 
+PAC I - Lab 8: Dessert Shoppe - Due 11/25/15
+Provided file - Do Not Change
+*/
 public abstract class DessertItem{
 
 	protected String name;

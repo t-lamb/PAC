@@ -1,3 +1,7 @@
+/* 
+Teresa Lamb
+PAC I - Lab 8: Dessert Shoppe - Due 11/25/15
+*/
 public class Candy extends DessertItem{
 	private double weight;
 	private int pricePerLb;

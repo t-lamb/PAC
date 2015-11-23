@@ -1,3 +1,11 @@
+/* 
+Teresa Lamb
+PAC I - Lab 8: Dessert Shoppe - Due 11/25/15
+
+This class keeps track of the entered Dessert Items. 
+It calculates the tax and total, then creates a 
+formatted String in the form of a reciept.
+*/
 public class Checkout{
 	public static int numberOfItems = 0;
 	private DessertItem[] itemArray;
@@ -52,6 +60,8 @@ public class Checkout{
 		
 		//Item names and prices
 		for (int i = 0; i < numberOfItems; i++){
+			String itemName = itemArray[i].getName();
+			String itemCost = DessertShoppe.cents2dollarsAndCents(itemArray[i].getCost());
 			if (itemArray[i] instanceof Candy){
 				double candyWeight = ((Candy)itemArray[i]).getWeight();
 				String candyCost = DessertShoppe.cents2dollarsAndCents(((Candy)itemArray[i]).getPricePerLb());
@@ -67,8 +77,6 @@ public class Checkout{
 				String nameTopping = ((Sundae)itemArray[i]).getNameTopping();
 				s += String.format("%s Sundae with\n", nameTopping);
 			}
-			String itemName = itemArray[i].getName();
-			String itemCost = DessertShoppe.cents2dollarsAndCents(itemArray[i].getCost());
 			s += String.format(leftColumn + rightColumn + "\n", itemName, itemCost); 
 		}
 
@@ -83,3 +91,14 @@ public class Checkout{
 		return s;
 	}
 }
+
+/*
+The Checkout class, provides methods to enter dessert
+items into the cash register, clear the cash register, 
+get the number of items, get the total cost of the items
+(before tax), get the total tax for the items, and get a 
+String representing a receipt for the dessert items. 
+The total tax should be rounded to the nearest cent. The 
+complete specifications for theCheckout class are provided 
+for you in JavaDoc format.
+*/

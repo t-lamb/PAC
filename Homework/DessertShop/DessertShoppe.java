@@ -1,3 +1,7 @@
+/* 
+PAC I - Lab 8: Dessert Shoppe - Due 11/25/15
+Provided file - Do Not Change
+*/
 public class DessertShoppe {
 	public final static double TAX_RATE = 6.5;
 	public final static String STORE_NAME = "M & M Dessert Shoppe";
