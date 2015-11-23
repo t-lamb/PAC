@@ -37,6 +37,9 @@ public class Checkout{
 		for (int i = 0; i < numberOfItems; i++){
 			if (itemArray[i] instanceof Candy){
 				String candyWeight = ((Candy)itemArray[i]).getWeight();
+				if (candyWeight.length() < 4){
+					candyWeight += "0";
+				}
 				String candyCost = DessertShoppe.cents2dollarsAndCents(((Candy)itemArray[i]).getPricePerLb());
 				s += String.format("%s lbs. @ %s /lb.\n", candyWeight, candyCost);
 			}
@@ -56,7 +59,7 @@ public class Checkout{
 			String itemCost = DessertShoppe.cents2dollarsAndCents(itemArray[i].getCost());
 			s += String.format("%s \t\t %s\n", itemName, itemCost);
 		}
-		s += String.format("Tax\t\t\t\t  %s \nTotal Cost\t\t\t%s", DessertShoppe.cents2dollarsAndCents(totalTax()), DessertShoppe.cents2dollarsAndCents(totalTax() + totalCost()));
+		s += String.format("Tax\t\t\t\t  %s\nTotal Cost\t\t\t%s", DessertShoppe.cents2dollarsAndCents(totalTax()), DessertShoppe.cents2dollarsAndCents(totalTax() + totalCost()));
 		return s;
 	}
 }
