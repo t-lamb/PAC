@@ -13,8 +13,8 @@ public class Cookie extends DessertItem{
 		return cost;
 	}
 
-	public String getNumCookies(){
-		return Integer.toString(numCookies);
+	public int getNumCookies(){
+		return numCookies;
 	}
 
 	public int getPricePerDozen(){

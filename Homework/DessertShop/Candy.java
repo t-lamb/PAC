@@ -13,8 +13,8 @@ public class Candy extends DessertItem{
 		return cost;
 	}
 
-	public String getWeight(){
-		return Double.toString(weight);
+	public double getWeight(){
+		return weight;
 	}
 
 	public int getPricePerLb(){

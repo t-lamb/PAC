@@ -33,33 +33,53 @@ public class Checkout{
 	}
 
 	public java.lang.String toString(){
-		String s = String.format("\t%s\n\t--------------------\n\n", DessertShoppe.STORE_NAME);
+		String s = "";
+		//Formating: set column widths
+		String leftColumn = "%-" + DessertShoppe.MAX_ITEM_NAME_SIZE + "s";
+		String rightColumn = "%" + DessertShoppe.COST_WIDTH + "s";
+		int recieptWidth = DessertShoppe.MAX_ITEM_NAME_SIZE + DessertShoppe.COST_WIDTH;
+
+		//Name of store underlined by row of dashes
+		String storeName = DessertShoppe.STORE_NAME;
+		String dashes = "";
+		//create string of dashes equal to length of store name
+		for(int i = 0; i < storeName.length(); i++){
+			dashes += "-";
+		}
+		//to center, I've added empty strings with a set width to act as padding
+		String padding = "%" + (recieptWidth - storeName.length())/2 + "s";
+		s += String.format(padding + "%s\n" + padding +"%s\n\n", "", storeName,"", dashes);
+		
+		//Item names and prices
 		for (int i = 0; i < numberOfItems; i++){
 			if (itemArray[i] instanceof Candy){
-				String candyWeight = ((Candy)itemArray[i]).getWeight();
-				if (candyWeight.length() < 4){
-					candyWeight += "0";
-				}
+				double candyWeight = ((Candy)itemArray[i]).getWeight();
 				String candyCost = DessertShoppe.cents2dollarsAndCents(((Candy)itemArray[i]).getPricePerLb());
-				s += String.format("%s lbs. @ %s /lb.\n", candyWeight, candyCost);
+				s += String.format("%,.2f lbs. @ %s /lb.\n", candyWeight, candyCost);
+				//%,.2f is a double with 2 decimal places of precision
 			}
 			if (itemArray[i] instanceof Cookie){
-				String numCookies = ((Cookie)itemArray[i]).getNumCookies();
+				int numCookies = ((Cookie)itemArray[i]).getNumCookies();
 				String cookieCost = DessertShoppe.cents2dollarsAndCents(((Cookie)itemArray[i]).getPricePerDozen());
-				s += String.format("%s @ %s /dz.\n", numCookies, cookieCost);
+				s += String.format("%d @ %s /dz.\n", numCookies, cookieCost);
 			}
 			if (itemArray[i] instanceof Sundae){
 				String nameTopping = ((Sundae)itemArray[i]).getNameTopping();
 				s += String.format("%s Sundae with\n", nameTopping);
 			}
 			String itemName = itemArray[i].getName();
-			if (itemName.length() < 12){
-				itemName += "\t";
-			}
 			String itemCost = DessertShoppe.cents2dollarsAndCents(itemArray[i].getCost());
-			s += String.format("%s \t\t %s\n", itemName, itemCost);
+			s += String.format(leftColumn + rightColumn + "\n", itemName, itemCost); 
 		}
-		s += String.format("Tax\t\t\t\t  %s\nTotal Cost\t\t\t%s", DessertShoppe.cents2dollarsAndCents(totalTax()), DessertShoppe.cents2dollarsAndCents(totalTax() + totalCost()));
+
+		//Tax
+		String tax = DessertShoppe.cents2dollarsAndCents(totalTax());
+		s += String.format(leftColumn + rightColumn + "\n", "Tax", tax);
+
+		//Total
+		String total = DessertShoppe.cents2dollarsAndCents(totalTax() + totalCost());
+		s += String.format(leftColumn + rightColumn + "\n", "Total Cost", total);
+		
 		return s;
 	}
 }
