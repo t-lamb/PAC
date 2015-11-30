@@ -1,3 +1,15 @@
+/* 
+Teresa Lamb
+PAC I - Lab 9 - Due 12/4/15
+Run 'GameofLife'
+
+Based on John Conway's Game of Life, this program explores 
+the reproductive patterns of boolean values.
+It takes in a (provided) data file, which it converts to a 
+2D array of chars. Each cell lives, dies, or regenerates
+based on its number of neighbors.
+*/
+
 import java.util.Scanner;
 import java.io.*;
 
@@ -140,17 +152,5 @@ public class GameofLife{
 			System.out.print("\n");
 		}
 		System.out.print("\n");
-
-		// //iterate through every row in newGen
-		// for (char cellArr[] : world){
-		// 	//iterate through every cell in that row
-		// 	for (char cell : cellArr){
-		// 		//print every cell in that row
-		// 		System.out.print(cell);
-		// 	}
-		// 	//at the end of every row, print new line
-		// 	System.out.print("\n");
-		// }
-		// System.out.print("\n");
 	}
 } 
