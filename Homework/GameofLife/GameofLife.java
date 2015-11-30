@@ -2,12 +2,13 @@ import java.util.Scanner;
 import java.io.*;
 
 public class GameofLife{
+	public static final int M = 25; //rows
+	public static final int N = 75; //columns
+
 	public static void main(String args[]){
-		boolean quit = false;
 		Scanner in = new Scanner(System.in);
+		boolean quit = false;
 		int genNum = 0;
-		final int M = 25; //rows
-		final int N = 75; //columns
 		char[][] oldGen = new char[M + 2][N + 2];
 
 		System.out.println("What file would you like to open?");
@@ -25,8 +26,6 @@ public class GameofLife{
 	    	System.exit(0);
 		}
 
-		System.out.println("\nGeneration " + genNum + ":");
-
 		//create initial 2D array from file
 		for (int row = 0; row < oldGen.length; row++) {
 			if (row == 0 || row == (oldGen.length-1)){
@@ -41,7 +40,7 @@ public class GameofLife{
 				oldGen[row] = line.toCharArray();
 			}
 		}
-		print(oldGen);
+		print(oldGen, genNum);
 
 		while(!quit){
 			System.out.println("Would you like to see another generation? (y/n)");
@@ -52,7 +51,6 @@ public class GameofLife{
 				//update generation
 				char[][] newGen = new char[M + 2][N + 2];				
 				genNum++;
-				System.out.println("\nGeneration " + genNum + ":");
 					
 				for (int row = 0; row < newGen.length; row++){
 					for (int col = 0; col < newGen[0].length; col++){
@@ -82,13 +80,19 @@ public class GameofLife{
 						}
 					}
 				}
+				print(newGen, genNum);
 
+				//update old generation with current values
 				oldGen = newGen;
-				print(newGen);
-				quit = isEmpty(newGen);
+
+				//check if world is empty
+				if (isEmpty(newGen)){
+					System.out.println("Your world is empty.");
+					quit = true;
+				}
 			}
 		}
-		System.out.println("Your world is empty.\n");
+		System.out.println("Goodbye.\n");
 	}
 
 	public static int getNeighbors(char[][] world, int row, int col){
@@ -125,18 +129,28 @@ public class GameofLife{
 		return true;
 	}
 
-	public static void print(char[][] world){
+	public static void print(char[][] world, int genNum){
+		
+		System.out.println("\nGeneration " + genNum + ":");
 
-		//iterate through every row in newGen
-		for (char cellArr[] : world){
-			//iterate through every cell in that row
-			for (char cell : cellArr){
-				//print every cell in that row
-				System.out.print(cell);
+		for (int row = 1; row <= M; row++) {
+			for (int col = 1; col <= N; col++){
+				System.out.print(world[row][col]);
 			}
-			//at the end of every row, print new line
 			System.out.print("\n");
 		}
 		System.out.print("\n");
+
+		// //iterate through every row in newGen
+		// for (char cellArr[] : world){
+		// 	//iterate through every cell in that row
+		// 	for (char cell : cellArr){
+		// 		//print every cell in that row
+		// 		System.out.print(cell);
+		// 	}
+		// 	//at the end of every row, print new line
+		// 	System.out.print("\n");
+		// }
+		// System.out.print("\n");
 	}
 } 
