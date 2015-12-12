@@ -33,7 +33,7 @@ public class Calculator{
 
 			//Determine if there is another expression to process
 			System.out.println();
-			System.out.println("Evaluate another expression? (y = yes): ");
+			System.out.println("Evaluate another expression? (y = yes)");
 			more = scan.nextLine();
 
 		} while(more.equalsIgnoreCase("y"));
@@ -89,6 +89,9 @@ public class Calculator{
 				else
 				if (operator.equals("-"))
 					result = operand1 - operand2;
+				else
+				if (operator.equals("^"))
+					result = (int)Math.pow((double)operand1, (double)operand2);
 				else
 					throw new PostFixException("Illegal symbol: " + operator);
 

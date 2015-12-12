@@ -50,6 +50,9 @@ public class PostFixEvaluator {
 				if (operator.equals("-"))
 					result = operand1 - operand2;
 				else
+				if (operator.equals("^"))
+					result = Math.pow(operand1, operand2);
+				else
 					throw new PostFixException("Illegal symbol: " + operator);
 
 				//Push result of operation to stack

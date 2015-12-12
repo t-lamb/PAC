@@ -43,6 +43,7 @@ public class ArrayStack<T> implements BoundedStackInterface<T>
   // Throws StackUnderflowException if this stack is empty,
   // otherwise removes top element from this stack.
   {                  
+
     if (!isEmpty())
     {
       stack[topIndex] = null;
