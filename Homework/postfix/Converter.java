@@ -1,5 +1,7 @@
+import java.util.Scanner;
+
 public class Converter{
-	private inFix;
+	private String inFix;
 	public Converter(String inFix){
 		this.inFix = inFix;
 	}
@@ -11,8 +13,8 @@ public class Converter{
 		while(tokenizer.hasNext()){
 			if (tokenizer.hasNextInt()){
 				//found operand
-				operand = tokenizer.nextInt();
-				pFix += operand;
+				int operand = tokenizer.nextInt();
+				pFix += (operand + " ");
 			} else {
 				//found operator
 				String operator = tokenizer.next();
@@ -20,40 +22,29 @@ public class Converter{
 					throw new PostFixException("Too many operands - stack overflow");
 				}
 
-				if (operator == ")"){
+				if (operator.equals(")")){
 					String lastOp = stack.top();
-					while (lastOp != "("){
-						pFix += lastOp;
+					while (!lastOp.equals("(")){
+						pFix += (lastOp + " ");
 						stack.pop();
 					}
-				} else if (operator == "/" || operator == "*"){
-					String lastOp = stack.top();
-					if (lastOp == "/" || lastOp == "+"){
-						pFix += lastOp;	
-						stack.pop();	
+					stack.pop();
+				} else {
+					if (operator.equals("/") || operator.equals("*")){
+						String lastOp = stack.top();
+						if (lastOp.equals("/") || lastOp.equals("*")){
+							pFix += (lastOp + " ");	
+							stack.pop();	
+						}
 					}
+					stack.push(operator);
 				}
-				stack.push(operator);
 				
-
-				// if (stack.isFull()){
-				// 	throw new PostFixException("Too many operands - stack overflow");
-				// } else if(operator == "+" || "-"){
-				// 	stack.push(operator);
-				// } else if(operator == "/" || operator == "*"){
-				// 	String lastOp = stack.top();
-				// 	if (lastOp == "+" || lastOp == "-"){
-				// 		stack.push(operator);	
-				// 	} else {
-				// 		pFix += lastOp;	
-				// 		stack.pop();
-				// 		stack.push(operator);					
-				// 	}
-				// }
 			}
 		}
 
-		while (!stack.empty()){
+		while (!stack.isEmpty()){
+			pFix += (stack.top() + " ");	
 			stack.pop();
 		}
 

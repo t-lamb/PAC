@@ -15,6 +15,7 @@ public class Calculator{
 			line = scan.nextLine();
 			Converter conv = new Converter(line);
 			String converted = conv.toPostFix();
+			System.out.println(converted);
 
 			//Obtain and output result of expression evaluated
 			try {
